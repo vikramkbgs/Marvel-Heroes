@@ -1,3 +1,6 @@
 body {
-    background-image: url("marvellHeroes.png");
+    background-repeat: no-repeat;
+    background-image: url(marvelHeroes.png);
+    background-size: 1536px 755px;
+    }
 }
