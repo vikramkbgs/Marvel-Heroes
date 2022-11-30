@@ -25,7 +25,7 @@ var AppMarvelList = (function () {
     // })
     try {
       const response = await fetch(
-        "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=ceee23f7402d93c0edb2d82268aceb9b&hash=c0f33182e46f2aebbfa3c53a7ab039fd"
+        "http://gateway.marvel.com/v1/public/characters?limit=100&offset=188&ts=1&apikey=ceee23f7402d93c0edb2d82268aceb9b&hash=c0f33182e46f2aebbfa3c53a7ab039fd"
       );
       const data = await response.json();
     heroes = data.data.results;
@@ -50,14 +50,19 @@ var AppMarvelList = (function () {
 
     div.innerHTML = `  
     <div class="card shadow-sm">
+        <img src="${
+          hero.thumbnail.path + "." + "jpg"
+        }" alt="Girl in a jacket" width="100%" height="160">
         <div class="card-body">
-            <p class="card-text">${hero.name}</p>
+            <h6 class="card-text">${hero.name}</h6>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-book"></i> Comics:  ${
+                      hero.comics.available
+                    }</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <i class="fa-regular fa-star"></i></button>
                 </div>
-                <small class="text-muted">9 mins</small>
             </div>
         </div>
     </div>
