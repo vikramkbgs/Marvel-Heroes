@@ -1,9 +1,13 @@
-body {
+main {
     background-repeat: no-repeat;
-    /* background-image: url(marvelHeroes.png); */
-    background-size: 1536px 755px;
+    background-image: url(marvelHeroes.png);
+    /* background-size: 1536px 755px; */
     }
 
 .search-btn{
     justify-content: center!important;
+}
+
+h1{
+    color:white;
 }
