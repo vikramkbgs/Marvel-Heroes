@@ -2,35 +2,36 @@
 var AppMarvelList = (function () {
   let heroes = [];
   const heroesList = document.getElementById("list");
-//   const addTaskInput = document.getElementById("add");
-//   const tasksCounter = document.getElementById("tasks-counter");
+  const  character= document.getElementById("character");
 
   console.log("Working");
 
-  // throught api data fetching
+  // throught api, list of character fetching
   async function fetchHeroes() {
-    //get request
-    // fetch('https://jsonplaceholder.typicode.com/todos') // promise return
-    // .then(function(response){
-    //     console.log(response);
-    //     return response.json(); // promise return
-    // }).then(function(data){
-    //     // console.log(data);
-
-    //     tasks = data.slice(0,15);
-    //     renderList();
-    // })
-    // .catch(function(error){       // for error
-    //     console.log('error', error);
-    // })
     try {
       const response = await fetch(
         "http://gateway.marvel.com/v1/public/characters?limit=100&offset=188&ts=1&apikey=ceee23f7402d93c0edb2d82268aceb9b&hash=c0f33182e46f2aebbfa3c53a7ab039fd"
       );
       const data = await response.json();
     heroes = data.data.results;
-    console.log(data);
+    // console.log(heroes);
     renderList();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // fetch individual character
+  async function fetchCharacter(id) {
+    try {
+      const response = await fetch(
+        "https://gateway.marvel.com:443/v1/public/characters/" +
+          id +
+          "?ts=1&apikey=ceee23f7402d93c0edb2d82268aceb9b&hash=c0f33182e46f2aebbfa3c53a7ab039fd"
+      );
+      const data = await response.json();
+      console.log(data.data.results[0]);
+      addCharacterToDOM(data.data.results[0]);
     } catch (error) {
       console.log(error);
     }
@@ -40,17 +41,9 @@ var AppMarvelList = (function () {
     const div = document.createElement("div");
             div.className ="col";   //adding class into div variable
 
-    // div.innerHTML = `
-    //     <input type="checkbox" id="${task.id}" ${
-    //   task.completed ? "checked" : ""
-    // }  class = "custom-checkbox">
-    //     <label for="${task.id}">${task.title}</label>
-    //     <img src="bin.png" class="delete" data-id="${task.id}"/>
-    // `;
-
     div.innerHTML = `  
     <div class="card shadow-sm">
-        <img src="${
+        <img class="image" id="${hero.id}" src="${
           hero.thumbnail.path + "." + "jpg"
         }" alt="Girl in a jacket" width="100%" height="160">
         <div class="card-body">
@@ -70,6 +63,21 @@ var AppMarvelList = (function () {
     heroesList.append(div);
   }
 
+  function addCharacterToDOM(hero){
+
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+     <section id="welcome-section" class="welcome-section">
+      <h1>${hero.name}</h1>
+      <img src="${hero.thumbnail.path + "." + "jpg"}" alt = "image not found">
+      <p>${hero.description}</p>
+    </section>
+    `;
+    heroesList.innerHTML ="";
+    character.append(div);
+  }
+
   function renderList() {
     heroesList.innerHTML = "";
     for (let i = 0; i < heroes.length; i++) {
@@ -77,7 +85,14 @@ var AppMarvelList = (function () {
     }
   }
 
+   function handleClickListener(e) {
+     const target = parseInt(e.target.id);
+     console.log(target);
+     fetchCharacter(target);
+   }
+
   function startApp() {
+    document.addEventListener("click", handleClickListener);
     fetchHeroes();
   }
   return {
