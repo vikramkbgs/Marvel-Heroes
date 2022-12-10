@@ -11,3 +11,30 @@ main {
 h1{
     color:white;
 }
+
+.image:hover {
+    background: #08911f;
+    cursor: pointer;
+}
+
+/* Welcome section */
+
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.welcome-section>p {
+    font-size: 3rem;
+    font-weight: 200;
+    font-style: italic;
+    color: var(--main-red);
+}
+.char-page{
+    width:55%;
+    height: 55%;
+}
