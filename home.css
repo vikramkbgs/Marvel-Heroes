@@ -1,0 +1,70 @@
+/* Global */
+/* Global */
+/* Global */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+body {
+    /* background-color: #747aa4;
+    background-color: #ab1b5e;
+    background-color: #dadadb; */
+    background-color: #393939;
+    /* background-color: #444c9a; */
+}
+
+nav {
+    font-size: 2em;
+    font-family: 'Roboto Mono', monospace;
+    background-color: #848484;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+/* left part of navbar */
+/* left part of navbar */
+/* left part of navbar */
+#nav-left {
+    display: flex;
+    /* background-color: #9498bb;    for editing */
+    margin-left: -20px;
+}
+
+#nav-left button {
+    border-style: none;
+    background-color: inherit;
+    padding: 0px;
+}
+
+button {
+    margin-left: 10px;
+}
+
+#nav-left button i {
+    color: #ae185e;
+}
+
+/* right part of navbar */
+/* right part of navbar */
+/* right part of navbar */
+
+#nav-right {
+    display: flex;
+    /* background-color: #e1afca; */
+    /*for editing */
+}
+
+#nav-right button {
+    border-style: none;
+    background-color: inherit;
+    padding: 0px;
+}
+
+#nav-right button i {
+    color: #ae185e;
+}
+
+
+[class="fa-brands fa-gratipay"]{
+    margin-left: 10px;
+}
