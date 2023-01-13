@@ -20,11 +20,11 @@
 
     <title>Marvel Heroes</title>
 </head>
-<body>
+<body onload="heroes()">
     <nav>
         <section id="nav-left">
             <button><i class="fa-brands fa-maxcdn"></i><em>arvelHero</em></button>
-            <button><i class="fa-brands fa-gratipay"></i></button>
+            <button><i id="header-heart" class="fa-brands fa-gratipay"></i></button>
             
         </section>
         <section id="nav-right">
@@ -38,13 +38,15 @@
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
                 <form class="d-flex my-4">
-                    <input type="text" role="search" class="form-control " placeholder="explore heroes ex:- batman, ironman..."/>
-                    <button class="btn btn-success">Search</button>
+                    <input type="text" role="search" class="form-control " id="name" placeholder="explore heroes ex:- batman, ironman..." onkeypress="heroes()"/>
+                    <button class="btn btn-success" onclick="heroes()">Search</button>
                 </form>
             </div>
         </div>
     </div>
-
+    <div id="cards-group" class="container">
+        
+    </div>
 
 
 <!-- local js file -->
