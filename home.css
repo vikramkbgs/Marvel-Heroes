@@ -65,6 +65,11 @@ button {
 }
 
 
-[class="fa-brands fa-gratipay"]{
+#header-heart{
     margin-left: 10px;
+}
+
+#heart-button{
+    color: #a49ea1;
+    border-style: none;
 }
