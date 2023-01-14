@@ -10,6 +10,9 @@ body {
     background-color: #dadadb; */
     background-color: #393939;
     /* background-color: #444c9a; */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
@@ -72,4 +75,16 @@ button {
 #heart-button{
     color: #a49ea1;
     border-style: none;
+}
+
+.card-columns {
+    column-count: 4;
+    column-gap: 0.1rem;
+    orphans: 1;
+    widows: 1;
+    break-inside: avoid;
+}
+
+footer{
+    margin-top: auto;
 }
