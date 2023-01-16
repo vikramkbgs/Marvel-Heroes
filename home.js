@@ -141,7 +141,7 @@ var App = (function () {
   // favourite action for fetch favourite heroes
   function favHeroes() {
     const xhr = new XMLHttpRequest();
-    let html = "";
+    let html = "<div class='card-columns'>";
 
     if (arr.length > 0) {
       //handling response
@@ -153,7 +153,7 @@ var App = (function () {
           // console.log(responseJSON);
           // console.log(count);
           // console.log(name);
-          html += "<div class='card-columns'>";
+          
           html += `
       <div class="card my-2" style="width:19rem;break-inside: avoid;">
                     <img class="card-img-top" src="${
@@ -765,6 +765,25 @@ var App = (function () {
     if (target.className == "card-img-top" || target.className == "card-title") {
       console.log("heroDetails");
       connection(target.id);
+      return;
+    }
+
+    if (target.className == "home") {
+      console.log("fetchHeroes");
+      fetchheroes("C");
+      return;
+    }
+    if (target.className == "fa-brands fa-maxcdn") {
+      console.log("fetchHeroes");
+      fetchheroes("D");
+      return;
+    }
+    if (
+      target.className == "fa-solid fa-user" ||
+      target.className == "fa-solid fa-bell" ||
+      target.className == "fa-solid fa-right-from-bracket"
+    ) {
+      alert("This action is currently not active.")
       return;
     }
   };
