@@ -1,15 +1,14 @@
-/* Global */
-/* Global */
-/* Global */
+:root {
+    --primary-color: #000000;
+    --background-color: #000000;
+    --navbar-color: #e23636;
+    --hover-color: rgb(68, 150, 170);
+    --heart-color: #a49ea1;
+} 
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 body {
-    /* background-color: #747aa4;
-    background-color: #ab1b5e;
-    background-color: #dadadb; */
-    background-color: #393939;
-    /* background-color: #444c9a; */
+    background-color: var(--background-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -18,25 +17,20 @@ body {
 nav {
     font-size: 2.5em;
     font-family: 'Roboto Mono', monospace;
-    background-color: #848484;
+    background-color: var(--navbar-color);
     display: flex;
     justify-content: space-evenly;
 }
 
-
-/* left part of navbar */
-/* left part of navbar */
-/* left part of navbar */
 #nav-left {
     display: flex;
-    /* background-color: #9498bb;    for editing */
     margin-left: -20px;
 }
 
 #nav-left button {
     border-style: none;
     background-color: inherit;
-    padding: 0px;
+    padding: 0;
 }
 
 button {
@@ -44,73 +38,83 @@ button {
 }
 
 #nav-left button i {
-    color: #ae185e;
+    color: var(--primary-color);
 }
-
-/* right part of navbar */
-/* right part of navbar */
-/* right part of navbar */
 
 #nav-right {
     display: flex;
-    /* background-color: #e1afca; */
-    /*for editing */
 }
 
 #nav-right button {
     border-style: none;
     background-color: inherit;
-    padding: 0px;
+    padding: 0;
 }
 
 #nav-right button i {
-    color: #ae185e;
+    color: var(--primary-color);
 }
 
-
-#header-heart{
+#header-heart {
     margin-left: 10px;
 }
 
-#header-heart:hover{
+#header-heart:hover {
     color: yellow;
 }
 
-.fa-brands:hover{
-    color: rgb(68, 150, 170);
+#nav-right button i:hover {
+    color: yellow;
+}
+.fa-brands:hover {
+    color: var(--hover-color);
 }
 
-.fa-gratipay{
+.fa-gratipay {
     font-size: 2rem;
-}
-#heart-button{
-    color: #a49ea1;
-    border-style: none;
-}
+    }
+    
+    #heart-button {
+        color: var(--heart-color);
+        border-style: none;
+    }
+    
+    .card-columns {
+        column-count: 4;
+        column-gap: 0.1rem;
+        orphans: 1;
+        widows: 1;
+        break-inside: avoid;
+    }
+    
+    footer {
+        margin-top: auto;
+        background-color: #212529d6 !important;
+    }
+    
+    a:hover,
+    a:active {
+        color: white;
+        background-color: #ED462F;
+        box-shadow: 0 1rem 2rem rgba(black, .4);
+        transform: rotate(5deg) scale(1.2);
+        padding: 2px;
+        box-sizing: border-box;
+    }
+    
+    h5:hover,
+    h5:active {
+        cursor: pointer;
+    }
 
-.card-columns {
-    column-count: 4;
-    column-gap: 0.1rem;
-    orphans: 1;
-    widows: 1;
-    break-inside: avoid;
+.loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: var(--background-color) !important;
+    transform: translate(-50%, -50%);
 }
-
-footer{
-    margin-top: auto;
-}
-
-a:hover,
-a:active {
-    color: white;
-    background-color: #ED462F;
-    box-shadow: 0 1rem 2rem rgba(black, .4);
-    transform: rotate(5deg) scale(1.2);
-    padding: 2px;
-    /* -webkit-transform: rotate(5deg) scale(1.3); */
-}
-
-h5:hover,
-h5:active{
-    cursor: pointer;
+#del-fav:hover{
+    color:red;
 }
