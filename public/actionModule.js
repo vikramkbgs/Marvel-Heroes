@@ -29,13 +29,15 @@ var App = (function(){
         `
             )
             .join("");
-          document.getElementById("hero-part").textContent = " ";
+          document.getElementById("hero-part-spinner").textContent="";
+          document.getElementById("hero-part").textContent = "";
           document.getElementById("comics-part").textContent = "";
           document.getElementById("alt-message").textContent = "";
           document.getElementById("cards-group").innerHTML = html;
         }
       })
       .catch((error) => {
+        document.getElementById("hero-part-spinner").textContent = "";
         document.getElementById("hero-part").textContent = "";
         document.getElementById("comics-part").textContent = "";
         document.getElementById("cards-group").textContent = "";
@@ -51,6 +53,7 @@ var App = (function(){
     const altMessage = document.getElementById("alt-message");
     const cardsGroup = document.getElementById("cards-group");
     const nameInput = document.getElementById("name");
+    const heroSpinner = document.getElementById("hero-part-spinner");
 
     const name = nameInput.value;
     // response handling
@@ -86,11 +89,13 @@ var App = (function(){
               )
               .join("")}</div>`;
             // set HTML
+            heroSpinner.innerHTML="";
             heroPart.innerHTML = " ";
             comicsPart.innerHTML = "";
             altMessage.innerHTML = "";
             cardsGroup.innerHTML = html;
           } else {
+            heroSpinner.innerHTML ="";
             heroPart.innerHTML = " ";
             comicsPart.innerHTML = "";
             cardsGroup.innerHTML = "";
@@ -98,6 +103,7 @@ var App = (function(){
           }
         })
         .catch((error) => {
+          heroSpinner.innerHTML = "";
           heroPart.innerHTML = "";
           comicsPart.innerHTML = "";
           cardsGroup.innerHTML = "";
@@ -156,6 +162,8 @@ const favHeroes = async () => {
     } else {
       html = `<h2><span style="font-weight:bold;">You've no Favourites...`;
     }
+    document.getElementById("hero-part-spinner").textContent = "";
+    document.getElementById("comics-part-spinner").textContent = "";
     document.getElementById("hero-part").innerHTML = " ";
     document.getElementById("comics-part").innerHTML = "";
     document.getElementById("alt-message").innerHTML = "";
@@ -274,7 +282,7 @@ const connection= (name)=> {
   // INCASE OF LOAD END
   xhr.onloadend = function () {
     document.getElementById("hero-part-spinner").innerHTML =
-      '<h3><strong id="spinnerText" class="text-success">Result...</strong></h3>';
+      '<h3 class="text-success"><strong id="spinnerText">Results...</strong></h3>';
   };
 
   xhr.open(
@@ -357,7 +365,7 @@ const comics = (characterID)=>{
               comic.title +
               '"></a>' +
               '<div class="card-body">' +
-              '<h5 class="card-title">' +
+              '<h5 class="card-title x">' +
               comic.title +
               "</h5>";
 
