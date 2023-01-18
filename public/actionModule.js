@@ -16,7 +16,7 @@ var App = (function(){
         heroes = JSON.parse(heroes);
       } else {
         // make API call
-        const url = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${name}&ts=1&apikey=01302fe8616347c6decaf8fc30e088f9&hash=ba81f8fdf7e1f5233e29dc5a8d5a227a`;
+        const url = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${name}&limit=60&ts=1&apikey=01302fe8616347c6decaf8fc30e088f9&hash=ba81f8fdf7e1f5233e29dc5a8d5a227a`;
         const response = await fetch(url);
         const responseJSON = await response.json();
         heroes = responseJSON.data.results;
@@ -56,7 +56,7 @@ var App = (function(){
     } catch (error) {
       // handle error
       document.getElementById("alt-message").innerHTML =
-        '<h2 style="font-weight:bold;">An error has occurred, check connection.</h2>';
+        '<h2 style="font-weight:bold; class="text-success">An error has occurred, check connection.</h2>';
       // hide loading spinner
       document.querySelector(".loading").style.display = "none";
     }
@@ -77,14 +77,16 @@ var App = (function(){
     heroPart.innerHTML = " ";
     comicsPart.innerHTML = "";
     altMessage.innerHTML = "";
-    cardsGroup.innerHTML="";
+    cardsGroup.innerHTML = "";
+    // show loading spinner
+    document.querySelector(".loading").style.display = "block";
 
     const name = nameInput.value;
     // response handling
     if (name.length > 0) {
       //sending request
       fetch(
-        `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${name}&ts=1&apikey=01302fe8616347c6decaf8fc30e088f9&hash=ba81f8fdf7e1f5233e29dc5a8d5a227a`
+        `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${name}&limit=40&ts=1&apikey=01302fe8616347c6decaf8fc30e088f9&hash=ba81f8fdf7e1f5233e29dc5a8d5a227a`
       )
         .then((response) => response.json())
         .then((responseJSON) => {
@@ -112,15 +114,24 @@ var App = (function(){
               </div>`
               )
               .join("")}</div>`;
+
+            // hide loading spinner
+            document.querySelector(".loading").style.display = "none";
             // set HTML
             cardsGroup.innerHTML = html;
           } else {
-            altMessage.innerHTML = `<h2><span style="font-weight:bold;">No results for... ${name}</span>" + ". Try different name.</h2>`;
+            // hide loading spinner
+            document.querySelector(".loading").style.display = "none";
+            altMessage.innerHTML = `<h2 class="text-success"><span style="font-weight:bold;" class="text-success">No results for... ${name}</span> try different name.</h2>`;
           }
         })
         .catch((error) => {
-          altMessage.innerHTML = `<h2 style="font--weight:bold;">An error has occurred, check connection.</h2>`;
+          // hide loading spinner
+          document.querySelector(".loading").style.display = "none";
+          altMessage.innerHTML = `<h2 style="font--weight:bold; class="text-success"">An error has occurred, check connection.</h2>`;
         });
+    }else{
+      fetchheroes("I");
     }
   };
 
@@ -184,7 +195,7 @@ const favHeroes = async () => {
       }
     }
   } else {
-    html = `<h2><span style="font-weight:bold;">You've no Favourites...`;
+    html = `<h2><span style="font-weight:bold; class="text-sucess"">You've no Favourites...`;
   }
   // hide loading spinner
   document.querySelector(".loading").style.display = "none";
@@ -219,7 +230,7 @@ const connection= (name)=> {
   // IN CASE OF ERROR
   xhr.onerror = function () {
     document.getElementById("alt-message").innerHTML =
-      '<h2 id="characterMainTitle">An error has occured, check connection.</h2>';
+      '<h2 id="characterMainTitle" class="text-success">An error has occured, check connection.</h2>';
   };
 
   // INCASE OF NO ERROR load
@@ -231,7 +242,7 @@ const connection= (name)=> {
     // IF THE COUNT IS 0 MEANS NO DATA AVAILABLE
     if (responseJSON.data.count === 0) {
       document.getElementById("hero-part").innerHTML =
-        '<h2 id="characterMainTitle"><span style="font-weight:bold;">No results for... ' +
+        '<h2 id="characterMainTitle" class="text-success"><span style="font-weight:bold;" class="text-success">No results for... ' +
         name +
         "</span>" +
         ". Try again.</h2>";
@@ -502,7 +513,7 @@ const clickEventHandler = (e) => {
 
     document.addEventListener("click", clickEventHandler);
     nameInput.addEventListener("keyup", heroes);
-    fetchheroes("u");
+    fetchheroes("S");
   };
 
 
