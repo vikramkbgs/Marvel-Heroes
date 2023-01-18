@@ -20,6 +20,7 @@ To use the Marvel Hero application, simply navigate to the URL (https://vikramkb
 - Each hero's detail page also provides details about comics which includes the description and creator of the comic.
 
 ## Screenshots
+
 ![Screenshot of the Marvel Hero application](/assests/homePage.PNG)
 ![Screenshot of the Marvel Hero application](/assests/favPage.PNG)
 ![Screenshot of the Marvel Hero application](/assests/comics.PNG)
