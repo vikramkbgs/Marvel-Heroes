@@ -13,7 +13,7 @@ A web application that allows users to browse and search for their favorite Marv
 The Marvel Hero project is a web application that allows users to explore the Marvel universe and learn more about their favorite heroes. Users can search for heroes by name, view detailed information about each hero, and even learn about their abilities and powers.
 
 ## Usage
-To use the Marvel Hero application, simply navigate to the URL (https://vikramkbgs.github.io/Marvel-Heroes/) after starting the development server and you can search heroes by name and view their details.
+To use the Marvel Hero application, simply navigate to the URL [https://vikramkbgs.github.io/Marvel-Heroes/] after starting the development server and you can search heroes by name and view their details.
 
 - Search heroes by name and view their details.
 - You can add your favorite heroes by clicking on the "Fav" button and remove them from the favorite list by clicking the same button again.
