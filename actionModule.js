@@ -392,7 +392,7 @@ const comics = (characterID)=>{
             const comic = comics[i];
 
             output +=
-              '<div class="card">' +
+              '<div class="card" style="break-inside: avoid;">' +
               '<a href=""><img src="' +
               comic.thumbnail["path"] +
               "." +
