@@ -137,7 +137,7 @@ var App = (function(){
 
   /* This code retrieves the value of the "fav" key from local storage, 
   and parse it as an array using JSON.parse, if the value is null it assigns an empty array to arr. */
-  const arr = JSON.parse(localStorage.getItem("fav")) || [];
+  var arr = JSON.parse(localStorage.getItem("fav")) || [];
   localStorage.setItem("fav", JSON.stringify(arr));
 
 const addFav =(id) => {
@@ -152,6 +152,9 @@ const addFav =(id) => {
   }
 
 const favHeroes = async () => {
+
+  arr = JSON.parse(localStorage.getItem("fav")) || [];
+  localStorage.setItem("fav", JSON.stringify(arr));
 
   //clear
   document.getElementById("hero-part-spinner").textContent = "";
@@ -195,7 +198,7 @@ const favHeroes = async () => {
       }
     }
   } else {
-    html = `<h2><span style="font-weight:bold; class="text-sucess"">You've no Favourites...`;
+    html = `<h2><span style="font-weight:bold;" class="text-success">You've no Favourites...</span><h2>`;
   }
   // hide loading spinner
   document.querySelector(".loading").style.display = "none";
@@ -242,10 +245,9 @@ const connection= (name)=> {
     // IF THE COUNT IS 0 MEANS NO DATA AVAILABLE
     if (responseJSON.data.count === 0) {
       document.getElementById("hero-part").innerHTML =
-        '<h2 id="characterMainTitle" class="text-success"><span style="font-weight:bold;" class="text-success">No results for... ' +
-        name +
-        "</span>" +
-        ". Try again.</h2>";
+        `<h2 id="characterMainTitle" class="text-success">No results for... 
+        ${name} 
+        . Try again.</h2>`;
 
       document.getElementById("hero-part-spinner").innerHTML = "";
       // document.getElementById("comicsSpinnerSection").innerHTML = "";
@@ -253,7 +255,7 @@ const connection= (name)=> {
     // IF SOMETHING WRONG WRITTEN IN THE INPUT
     else if (responseJSON == undefined || responseJSON.length == 0) {
       document.getElementById("hero-part").innerHTML =
-        '<h2 id="characterMainTitle">' +
+        '<h2 id="characterMainTitle" class="text-success">' +
         "An error might have occured on our end, Sorry. <br>In this case, try again later.</h2>";
 
       document.getElementById("hero-part-spinner").innerHTML = "";
@@ -340,9 +342,9 @@ const comics = (characterID)=>{
     //IN CASE OF ERROR
     xhr.onerror = function () {
       document.getElementById("hero-part").innerHTML =
-        '<h2 id="characterMainTitle">An error has occured, check connection.</h2>';
+        '<h2 id="characterMainTitle" class="text-success">An error has occured, check connection.</h2>';
       document.getElementById("comics-part").innerHTML =
-        '<h2 id="characterMainTitle">An error has occured, check connection.</h2>';
+        '<h2 id="characterMainTitle" class="text-success">An error has occured, check connection.</h2>';
     };
 
     // ON LOAD SECTION
@@ -353,7 +355,7 @@ const comics = (characterID)=>{
       // IF THE COUNT IS 0 MEANS NO DATA AVAILABLE
       if (responseJSONcomic.data.count === 0) {
         document.getElementById("hero-part").innerHTML =
-          '<h2 id="characterMainTitle"><span style="font-weight:bold;">No results for... ' +
+          '<h2 id="characterMainTitle" class="text-success"><span style="font-weight:bold;">No results... ' +
           "</span>" +
           ". Try defferent Heroes.</h2>";
 
@@ -366,7 +368,7 @@ const comics = (characterID)=>{
         responseJSONcomic.length == 0
       ) {
         document.getElementById("hero-part").innerHTML =
-          '<h2 id="characterMainTitle">' +
+          '<h2 id="characterMainTitle" class="text-success">' +
           "An error might have occured on our end, Sorry. <br>In this case, try again later.</h2>";
 
         // document.getElementById("characterSpinnerSection").innerHTML = "";
@@ -457,9 +459,9 @@ const comics = (characterID)=>{
     // ON ERROR
     xhr.onerror = function () {
       document.getElementById("hero-part").innerHTML =
-        '<h2 id="characterMainTitle">An error has occured, check connection.</h2>';
+        '<h2 id="characterMainTitle class="text-success"">An error has occured, check connection.</h2>';
       document.getElementById("comics-part").innerHTML =
-        '<h2 id="characterMainTitle">An error has occured, check connection.</h2>';
+        '<h2 id="characterMainTitle" class="text-success">An error has occured, check connection.</h2>';
     };
 
     xhr.open(
@@ -473,7 +475,7 @@ const comics = (characterID)=>{
 
 const clickEventHandler = (e) => {
   const target = e.target;
-  console.log(target);
+  // console.log(target);
   switch (target.className) {
     case "fa-brands fa-gratipay":
       addFav(parseInt(target.id));
@@ -508,7 +510,7 @@ const clickEventHandler = (e) => {
 
   const startApp = () => {
     console.log("App runing...");
-    console.log("localStorage: ", arr);
+    // console.log("localStorage: ", arr);
     const nameInput = document.getElementById("name");
 
     document.addEventListener("click", clickEventHandler);
