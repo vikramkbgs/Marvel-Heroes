@@ -20,9 +20,9 @@ To use the Marvel Hero application, simply navigate to the URL (https://vikramkb
 - Each hero's detail page also provides details about comics which includes the description and creator of the comic.
 
 ## Screenshots
-![Screenshot of the Marvel Hero application](homePage.png)
-![Screenshot of the Marvel Hero application](favPage.png)
-![Screenshot of the Marvel Hero application](comics.png)
+![Screenshot of the Marvel Hero application](/assests/homePage.PNG)
+![Screenshot of the Marvel Hero application](/assests/favPage.PNG)
+![Screenshot of the Marvel Hero application](/assests/comics.PNG)
 
 ## License
 The Marvel Hero project is released under the MIT License. This means that you are free to use, modify, and distribute the code as you see fit, as long as you include the original copyright and license notice in any distribution.
