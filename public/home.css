@@ -4,8 +4,40 @@
     --navbar-color: #848484;
     --hover-color: rgb(68, 150, 170);
     --heart-color: #a49ea1;
+} */
+ :root {
+    --primary-color: #0077c9;
+    --background-color: #393939;
+    --navbar-color: #848484;
+    --hover-color: rgb(68, 150, 170);
+    --heart-color: #a49ea1;
 }
 
+:root {
+    --primary-color: #1E90FF;
+    /* a high contrast blue color */
+    --background-color: #FFFFFF;
+    /* a bright white color for better contrast */
+    --navbar-color: #848484;
+    /* a gray color for less distraction */
+    --hover-color: #ADD8E6;
+    /* a light blue color for hover effect */
+    --heart-color: #DC143C;
+    /* a high contrast red color */
+}
+
+/* /* :root { */
+    /* --primary-color: #FF7F50; */
+    /* a bright orange color */
+    /* --background-color: #87CEFA; */
+    /* a light blue color */
+    /* --navbar-color: #FFFF00; */
+    /* a bright yellow color */
+    /* --hover-color: #8A2BE2; */
+    /* a deep purple color */
+    /* --heart-color: #32CD32; */
+    /* a bright green color */
+/* } */ 
 body {
     background-color: var(--background-color);
     min-height: 100vh;
@@ -101,3 +133,11 @@ button {
     h5:active {
         cursor: pointer;
     }
+.loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: var(--background-color);
+    transform: translate(-50%, -50%);
+}
