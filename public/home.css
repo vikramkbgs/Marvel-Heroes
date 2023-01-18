@@ -115,3 +115,6 @@ button {
     background-color: var(--background-color) !important;
     transform: translate(-50%, -50%);
 }
+#del-fav:hover{
+    color:red;
+}
