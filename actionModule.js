@@ -180,7 +180,7 @@ const favHeroes = async () => {
   // show loading spinner
   document.querySelector(".loading").style.display = "block";
 
-  let html = "<div class='card-columns'>";
+  let html = `<h3 class="text-success">Favourites...</h3><hr/>`+"<div class='card-columns'>";
   if (arr.length > 0) {
     for (let i = 0; i < arr.length; i++) {
       var id = arr[i];
